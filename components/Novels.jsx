@@ -6,16 +6,22 @@ import Novel from './Novel'
 export default () => {
   const [searchTerm, setSearchTerm] = useState('')
   const [novelList, setNovelList] = useState([])
+  const [filteredNovelList, setFilteredNovelList] = useState([])
 
   useEffect(() => {
     async function pullData() {
       const { data } = await axios.get('http://localhost:1337/api/novels')
 
       setNovelList(data)
+      setFilteredNovelList(data)
     }
     pullData()
   }, [])
-  useEffect(() => {}, [searchTerm])
+  useEffect(() => {
+    const filtered = novelList.filter(novel => novel.title.toLowerCase().includes(searchTerm.toLowerCase()))
+
+    setFilteredNovelList(filtered)
+  }, [searchTerm])
 
   return (
     <div className="page">
@@ -23,7 +29,7 @@ export default () => {
       <Search term={searchTerm} setter={setSearchTerm} />
       {
         // eslint-disable-next-line max-len
-        novelList.map(novel => (<Novel key={novel.id} id={novel.id} title={novel.title} author={`${novel.author.nameFirst} ${novel.author.nameLast}`} />))
+        filteredNovelList.map(novel => (<Novel key={novel.id} id={novel.id} title={novel.title} author={`${novel.author.nameFirst} ${novel.author.nameLast}`} />))
       }
     </div>
   )
