@@ -1,23 +1,27 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import Novel from './Novel'
 
 export default () => {
-  const [novel, setNovel] = useState('')
+  const [title, setTitle] = useState('')
   const [novelList, setNovelList] = useState([])
+
   useEffect(() => {
     async function pullData() {
-      const { data } = await axios.get("http://localhost:1337/api/novels");
-        setNovelList(data);
+      const { data } = await axios.get('http://localhost:1337/api/novels')
+
+      setNovelList(data)
     }
-     pullData();
-  }, []);
+    pullData()
+  }, [])
 
   return (
     <div className="page">
       <div className="title">Great Novels</div>
-      <input type="text" name="search" onChange={event => setNovel(event.target.value)} />
+      <input type="text" name="search" onChange={event => setTitle(event.target.value)} />
       {
-        novelList.map(novel => (<div>{`${novel.title} by ${novel.author.nameFirst} ${novel.author.nameLast}`}</div>))
+        // eslint-disable-next-line max-len
+        novelList.map(novel => (<Novel key={novel.id} id={novel.id} title={novel.title} author={`${novel.author.nameFirst} ${novel.author.nameLast}`} />))
       }
     </div>
   )

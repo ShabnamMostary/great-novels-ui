@@ -98,6 +98,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 
 /***/ }),
 
+/***/ "./components/Novel.jsx":
+/*!******************************!*\
+  !*** ./components/Novel.jsx ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (({\n  id,\n  title,\n  author\n}) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n  key: id,\n  className: \"novel\"\n}, `${title} by ${author}`));\n\n//# sourceURL=webpack:///./components/Novel.jsx?");
+
+/***/ }),
+
 /***/ "./components/Novels.jsx":
 /*!*******************************!*\
   !*** ./components/Novels.jsx ***!
@@ -106,7 +118,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (() => {\n  const [novel, setNovel] = Object(react__WEBPACK_IMPORTED_MODULE_1__[\"useState\"])('');\n  const [novelList, setNovelList] = Object(react__WEBPACK_IMPORTED_MODULE_1__[\"useState\"])([]);\n  Object(react__WEBPACK_IMPORTED_MODULE_1__[\"useEffect\"])(() => {\n    async function pullData() {\n      const {\n        data\n      } = await axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(\"http://localhost:1337/api/novels\");\n      setNovelList(data);\n    }\n\n    pullData();\n  }, []);\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(\"div\", {\n    className: \"page\"\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(\"div\", {\n    className: \"title\"\n  }, \"Great Novels\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(\"input\", {\n    type: \"text\",\n    name: \"search\",\n    onChange: event => setNovel(event.target.value)\n  }), novelList.map(novel => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(\"div\", null, `${novel.title} by ${novel.author.nameFirst} ${novel.author.nameLast}`)));\n});\n\n//# sourceURL=webpack:///./components/Novels.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _Novel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Novel */ \"./components/Novel.jsx\");\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (() => {\n  const [title, setTitle] = Object(react__WEBPACK_IMPORTED_MODULE_1__[\"useState\"])('');\n  const [novelList, setNovelList] = Object(react__WEBPACK_IMPORTED_MODULE_1__[\"useState\"])([]);\n  Object(react__WEBPACK_IMPORTED_MODULE_1__[\"useEffect\"])(() => {\n    async function pullData() {\n      const {\n        data\n      } = await axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('http://localhost:1337/api/novels');\n      setNovelList(data);\n    }\n\n    pullData();\n  }, []);\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(\"div\", {\n    className: \"page\"\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(\"div\", {\n    className: \"title\"\n  }, \"Great Novels\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(\"input\", {\n    type: \"text\",\n    name: \"search\",\n    onChange: event => setTitle(event.target.value)\n  }), // eslint-disable-next-line max-len\n  novelList.map(novel => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Novel__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    key: novel.id,\n    id: novel.id,\n    title: novel.title,\n    author: `${novel.author.nameFirst} ${novel.author.nameLast}`\n  })));\n});\n\n//# sourceURL=webpack:///./components/Novels.jsx?");
 
 /***/ }),
 
