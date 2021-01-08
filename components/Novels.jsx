@@ -10,7 +10,7 @@ export default () => {
 
   useEffect(() => {
     async function pullData() {
-      const novels = await retrieveNovels
+      const novels = await retrieveNovels()
 
       setNovelList(novels)
       setFilteredNovelList(novels)
@@ -28,14 +28,8 @@ export default () => {
       <div className="title">Great Novels</div>
       <Search term={searchTerm} setter={setSearchTerm} />
       {
-        filteredNovelList.map(novel => (
-          <Novel
-            key={novel.id}
-            id={novel.id}
-            title={novel.title}
-            author={`${novel.author.nameFirst} ${novel.author.nameLast}`}
-          />
-        ))
+        // eslint-disable-next-line max-len
+        filteredNovelList.map(novel => (<Novel key={novel.id} id={novel.id} title={novel.title} author={`${novel.author.nameFirst} ${novel.author.nameLast}`} />))
       }
     </div>
   )
