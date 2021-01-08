@@ -1,7 +1,7 @@
-import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Search from './Search'
 import Novel from './Novel'
+import { filterNovels, retrieveNovels } from '../utils/novels'
 
 export default () => {
   const [searchTerm, setSearchTerm] = useState('')
@@ -10,15 +10,15 @@ export default () => {
 
   useEffect(() => {
     async function pullData() {
-      const { data } = await axios.get('http://localhost:1337/api/novels')
+      const novels = await retrieveNovels
 
-      setNovelList(data)
-      setFilteredNovelList(data)
+      setNovelList(novels)
+      setFilteredNovelList(novels)
     }
     pullData()
   }, [])
   useEffect(() => {
-    const filtered = novelList.filter(novel => novel.title.toLowerCase().includes(searchTerm.toLowerCase()))
+    const filtered = filterNovels(novelList, searchTerm)
 
     setFilteredNovelList(filtered)
   }, [searchTerm])
@@ -28,8 +28,14 @@ export default () => {
       <div className="title">Great Novels</div>
       <Search term={searchTerm} setter={setSearchTerm} />
       {
-        // eslint-disable-next-line max-len
-        filteredNovelList.map(novel => (<Novel key={novel.id} id={novel.id} title={novel.title} author={`${novel.author.nameFirst} ${novel.author.nameLast}`} />))
+        filteredNovelList.map(novel => (
+          <Novel
+            key={novel.id}
+            id={novel.id}
+            title={novel.title}
+            author={`${novel.author.nameFirst} ${novel.author.nameLast}`}
+          />
+        ))
       }
     </div>
   )
