@@ -1,23 +1,28 @@
+body{
+   background-color: 	#000000;
+}
 .page {
   margin: 60px auto 0;
   text-align: center;
   width: 60%;
+  font-family: Verdana, Geneva, sans-serif;
 }
-
 .title {
-  font-size: 24px;
+  font-size: 25px;
   font-weight: 600;
   margin-bottom: 20px;
+  color:#00ffff;
 }
 input {
   border-radius: 8px;
   font-size: 16px;
   padding: 5px;
   margin: 20px 0;
-  outline: none;
+  outline: none; 
 }
-
 .novel {
-  font-size: 20px;
+  font-size: 15px;
   margin-bottom: 10px;
+  color:#ffffff;
+  padding:2px;
 }
